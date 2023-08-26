@@ -112,8 +112,7 @@ class Login extends StatelessWidget {
     );
   }
 
-  Future<String?> obtenerToken(
-      BuildContext context, String userName, String password) async {
+  Future<String?> obtenerToken(String userName, String password) async {
     String? token;
 
     final response = await http.post(
@@ -139,8 +138,7 @@ class Login extends StatelessWidget {
   login(BuildContext context) async {
     final mensaje = ScaffoldMessenger.of(context);
     final navigator = Navigator.of(context);
-    final String? token =
-        await obtenerToken(context, userName.text, password.text);
+    final String? token = await obtenerToken(userName.text, password.text);
 
     if (formKey.currentState!.validate() && token != null) {
       await box.write('token', token);
