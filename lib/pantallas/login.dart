@@ -40,12 +40,13 @@ class Login extends StatelessWidget {
                       errorWidget: (context, url, error) {
                         return const Icon(
                           Icons.no_photography,
-                          color: Colors.red,
+                          color: Colors.black,
                           size: 100,
                         );
                       },
                       width: 120,
-                      imageUrl: "https://fakestoreapi.com/icons/logo.png"),
+                      imageUrl:
+                          "https://cdn-icons-png.flaticon.com/512/295/295128.png"),
                 ),
                 Form(
                   key: formKey,
@@ -93,7 +94,7 @@ class Login extends StatelessWidget {
                     login(context);
                   },
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.purple[400],
+                      backgroundColor: Colors.blue,
                       minimumSize: const Size(200, 50)),
                   child: const Text(
                     "Login",
@@ -135,7 +136,7 @@ class Login extends StatelessWidget {
     }
   }
 
-  Future<void> login(BuildContext context) async {
+  login(BuildContext context) async {
     final mensaje = ScaffoldMessenger.of(context);
     final navigator = Navigator.of(context);
     final String? token =
