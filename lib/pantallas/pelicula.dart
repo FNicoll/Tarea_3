@@ -133,12 +133,12 @@ class PeliculaDetalle extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  const Row(
+                  Row(
                     children: [
                       Text(
-                        "Titulo Original:  ",
+                        "Titulo Original: ${pelicula.originalTitle} ",
                       ),
-                      Icon(Icons.movie_creation_outlined)
+                      const Icon(Icons.movie_creation_outlined)
                     ],
                   ),
                   const SizedBox(
