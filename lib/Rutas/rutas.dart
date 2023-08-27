@@ -5,6 +5,6 @@ import 'package:tarea3/pantallas/pelicula.dart';
 
 final rutas = {
   Constantes.login.name: (context) => Login(),
-  Constantes.inicio.name: (context) => const Inicio(),
+  Constantes.inicio.name: (context) => Inicio(),
   Constantes.pelicula.name: (context) => const Pelicula(),
 };
