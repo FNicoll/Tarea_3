@@ -20,7 +20,7 @@ class PeliculaDetalle extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(pelicula.title),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: const Color.fromARGB(255, 181, 151, 232),
       ),
       body: SingleChildScrollView(
         child: Column(

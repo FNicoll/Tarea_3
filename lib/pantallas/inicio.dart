@@ -16,7 +16,7 @@ class Inicio extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Películas Populares'),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: const Color.fromARGB(255, 181, 151, 232),
       ),
       drawer: Drawer(
         child: ListView(
