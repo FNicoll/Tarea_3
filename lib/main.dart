@@ -17,7 +17,6 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
       initialRoute:
           (logueado() ? Constantes.inicio.name : Constantes.login.name),
       routes: rutas,

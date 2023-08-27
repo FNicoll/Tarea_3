@@ -4,7 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:tarea3/Rutas/constantes.dart';
-import 'package:tarea3/widgets/textfield.dart';
+import 'package:tarea3/textfield.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
