@@ -133,13 +133,8 @@ class PeliculaDetalle extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "Titulo Original: ${pelicula.originalTitle} ",
-                      ),
-                      const Icon(Icons.movie_creation_outlined)
-                    ],
+                  Text(
+                    "Titulo Original: ${pelicula.originalTitle} ",
                   ),
                   const SizedBox(
                     height: 8,
@@ -221,14 +216,16 @@ class ActorItem extends StatelessWidget {
                   (index.profilePath != null)
                       ? CircleAvatar(
                           radius: 70,
-                          backgroundColor: Colors.deepPurple,
+                          backgroundColor:
+                              const Color.fromARGB(255, 181, 151, 232),
                           backgroundImage: NetworkImage(
                             "https://image.tmdb.org/t/p/w500${index.profilePath}",
                           ),
                         )
                       : const CircleAvatar(
                           radius: 70,
-                          backgroundColor: Colors.deepPurple,
+                          backgroundColor:
+                              const Color.fromARGB(255, 181, 151, 232),
                           child: Icon(
                             Icons.person,
                             size: 120,
