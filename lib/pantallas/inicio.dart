@@ -16,6 +16,7 @@ class Inicio extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Películas Populares'),
+        backgroundColor: Colors.deepPurple,
       ),
       drawer: Drawer(
         child: ListView(
@@ -115,7 +116,6 @@ class Inicio extends StatelessWidget {
       final List<dynamic> results = data['results'];
       return results.map((results) => PeliculaModel.fromJson(results)).toList();
     } else {
-      // throw Exception('Error no se resolvio la petición');
       return [];
     }
   }

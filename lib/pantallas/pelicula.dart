@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:tarea3/modelos/actoresmodel.dart';
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:tarea3/modelos/peliculamodel.dart';
 
@@ -19,28 +20,62 @@ class PeliculaDetalle extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(pelicula.title),
+        backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            SizedBox(
-              height: 350,
-              child: CachedNetworkImage(
-                placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(strokeWidth: 4)),
-                errorWidget: (context, url, error) => const Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.cloud_off),
-                    Text("Sin conexión"),
-                  ],
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 350,
+                  child: CachedNetworkImage(
+                    placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(strokeWidth: 4)),
+                    errorWidget: (context, url, error) => const Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.cloud_off),
+                        Text("Sin conexión"),
+                      ],
+                    ),
+                    imageUrl:
+                        "https://image.tmdb.org/t/p/w500${pelicula.posterPath}",
+                    width: double.infinity,
+                    height: 300,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                imageUrl:
-                    "https://image.tmdb.org/t/p/w500${pelicula.posterPath}",
-                width: 200,
-                height: 300,
-              ),
+                Positioned.fill(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                    child: Container(
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 350,
+                  child: CachedNetworkImage(
+                    placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(strokeWidth: 4)),
+                    errorWidget: (context, url, error) => const Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.cloud_off),
+                        Text("Sin conexión"),
+                      ],
+                    ),
+                    imageUrl:
+                        "https://image.tmdb.org/t/p/w500${pelicula.posterPath}",
+                    width: 200,
+                    height: 300,
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding:
@@ -59,22 +94,63 @@ class PeliculaDetalle extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Text("Fecha de Lanzamiento: ${pelicula.releaseDate}"),
+                  Row(
+                    children: [
+                      const Text(
+                        "Fecha de Lanzamiento: ",
+                        style: TextStyle(
+                            color: Colors.black, fontStyle: FontStyle.normal),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            pelicula.releaseDate,
+                            style: const TextStyle(
+                                color: Colors.grey,
+                                fontStyle: FontStyle.italic),
+                          ),
+                          const Icon(Icons.date_range, color: Colors.grey)
+                        ],
+                      ),
+                    ],
+                  ),
                   const SizedBox(
                     height: 8,
                   ),
-                  Text("Rating: ${pelicula.voteAverage}"),
+                  Row(
+                    children: [
+                      Text(
+                        "Rating: ${pelicula.voteAverage} ",
+                        style: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                      const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      )
+                    ],
+                  ),
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(
-                    "Titulo Original: ${pelicula.originalTitle}",
+                  const Row(
+                    children: [
+                      Text(
+                        "Titulo Original:  ",
+                      ),
+                      Icon(Icons.movie_creation_outlined)
+                    ],
                   ),
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(
-                    "Lenguaje Original: ${pelicula.originalLanguage}",
+                  Row(
+                    children: [
+                      Text(
+                        "Lenguaje Original: ${pelicula.originalLanguage}",
+                      ),
+                      const Icon(Icons.language)
+                    ],
                   ),
                   const SizedBox(
                     height: 8,
@@ -145,15 +221,18 @@ class ActorItem extends StatelessWidget {
                   (index.profilePath != null)
                       ? CircleAvatar(
                           radius: 70,
+                          backgroundColor: Colors.deepPurple,
                           backgroundImage: NetworkImage(
                             "https://image.tmdb.org/t/p/w500${index.profilePath}",
                           ),
                         )
                       : const CircleAvatar(
                           radius: 70,
+                          backgroundColor: Colors.deepPurple,
                           child: Icon(
                             Icons.person,
                             size: 120,
+                            color: Colors.white,
                           ),
                         ),
                   Text(index.name),
